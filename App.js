@@ -17,7 +17,7 @@ export default function App() {
   const agrandar = () => {
     Animated.sequence([
       Animated.timing(scaleAnim, {
-        toValue: 10, // Agranda a 10x
+        toValue: 7, // Agranda a 7x
         duration: 300,
         useNativeDriver: true
       }),
