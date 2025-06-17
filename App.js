@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 export default function App() {
-  const [dado, setDado] = useState(0);
+  const [dado, setDado] = useState("⚀");
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const dadoValues = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
@@ -38,21 +38,17 @@ export default function App() {
     }).start();
   };
 
+  const rotate = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"]
+  });
+
   const numeroDado = () => {
     agrandar();
     rotar();
     const numero = Math.floor(Math.random() * 6);
     setDado(dadoValues[numero]);
   };
-
-  useEffect(() => {
-    numeroDado();
-  }, []);
-
-  const rotate = rotateAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ["0deg", "360deg"]
-  });
 
   return (
     <View style={styles.container}>
